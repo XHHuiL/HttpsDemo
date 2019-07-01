@@ -20,6 +20,7 @@ public class HttpsApplication {
     @Bean
     public Connector connector() {
         Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+        // 捕获http请求，并将其重定向到443端口
         connector.setScheme("http");
         connector.setPort(80);
         connector.setSecure(false);
@@ -29,6 +30,7 @@ public class HttpsApplication {
 
     @Bean
     public TomcatServletWebServerFactory servletContainer() {
+        // 对http请求添加安全性约束，将其转换为https请求
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
             @Override
             protected void postProcessContext(Context context) {
