@@ -4,10 +4,11 @@ server:
 #  配置ssl证书
   ssl:
 #    SSL证书test.p12与application.yml放在同级目录下
-    key-store: classpath:test.p12
-    key-store-password: 123456
+    # key-store: classpath:test.p12
+#    阿里云申请的免费SSL证书，绑定了相应的域名，服务器类型为Tomcat
+    key-store: classpath:ssl.pfx
+    key-store-password: fG1Yh6vx
     keyStoreType: PKCS12
-    keyAlias: test
 
 spring:
   datasource:
